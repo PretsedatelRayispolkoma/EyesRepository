@@ -1,0 +1,82 @@
+﻿<Page x:Class="ProductStore.Pages.AgentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProductStore.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AgentsPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="85*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Background="MediumPurple">
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="SearchTb" Grid.Column="0" Width="200" Height="30" TextChanged="SearchTb_TextChanged"/>
+            <ComboBox x:Name="FilterByDateCb" Grid.Column="1" Width="200" Height="30" SelectionChanged="FilterByDateCb_SelectionChanged"/>
+            <ComboBox x:Name="SortByDateCb" Grid.Column="2" Width="200" Height="30" SelectionChanged="SortByDateCb_SelectionChanged"/>
+        </Grid>
+        <Grid  Grid.Column="0" Grid.Row="1" Background="MediumPurple">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="AddAgentBtn" Grid.Row="0" Content="Добавить" Width="100" Height="30" Click="AddAgentBtn_Click"/>
+                    <!--<Button x:Name="TeachersBtn" Grid.Row="0" Content="Учителя" Width="100" Height="30" Click="TeachersBtn_Click"/>
+                    <Button x:Name="GroupsBtn" Grid.Row="1" Content="Группы" Width="100" Height="30" Click="GroupsBtn_Click"/>-->
+                </Grid>
+            </DockPanel>
+            <!--<Button x:Name="QuitBtn" Content="Выйти" Grid.Row="2" Width="100" Height="30" Click="QuitBtn_Click"/>-->
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="95*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <ListView x:Name="WorkloadLv" Grid.Row="0" Margin="10">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="{Binding DiscountColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding ImagesSource}" Width="100" Grid.Column="0" Margin="5"></Image>
+                            <TextBlock Text="{Binding AgentName}"  Width ="200" Grid.Column="2" Margin="5" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding CountOfSales, StringFormat=Продаж в текущем году: {0}}" Width="150" Grid.Column="3" Margin="5" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Discount, StringFormat=Скида: {0}}"  Width ="80" Grid.Column="4" Margin="5" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Phone}"  Width ="250" Grid.Column="5" Margin="5" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding TypeOfAgent}"  Width ="70" TextWrapping="Wrap" Grid.Column="1" Margin="5" VerticalAlignment="Center"/>
+                            <Button x:Name="UpdateBtn" Content="Редактировать" Width="100" Height="30" Background="Transparent" VerticalAlignment="Center" BorderBrush="Transparent" Grid.Column="6" Margin="5" Click="UpdateBtn_Click"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>
